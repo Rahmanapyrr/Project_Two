@@ -37,3 +37,9 @@ main:
 		lb $t1,0($t2) #loads index of string
 		beq $t1,0, Convert #checks for null, then branches to Exits
 		beq $t1, 10, Convert #looks for new line character, then branches to Exits
+		#We already established that we're not at the end of the list, so if the counter is greater than 4 at this point, the string is too long. 
+		beq $t3, 5, invalid_length #Stops the program when it realizes the input is too long
+		addi $t2, $t2, 1 #points to next character in string
+		beq $t1, 32, find_length  # to skip spaces
+		addi $t3, $t3, 1 #counter increments
+		j find_length #jumps to continues loop
