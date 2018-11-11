@@ -1,14 +1,14 @@
 # Assume your Howard ID as a decimal integer is X. Let N = 27 + (X % 10) where % is the modulo operation, and M = N – 10. 
 # You will write a MIPS program that reads a string of up to 4 characters from user input.
-
-
 .data
-	max_input: .space 1000
-	valid_space: .space 4
-	not_valid: .asciiz "\nInvalid base-N number."
-	empty: .asciiz "\nInput is empty."
-	too_long: .asciiz "\nInput is too long."
+	char_array: .space 1000
+	
+	#Invalid Messages
+	not_valid: .asciiz "Invalid base-31 number."
+	empty: .asciiz "Input is empty."
+	too_long: .asciiz "Input is too long."
 .text
+.globl main
 
 main:
 	
