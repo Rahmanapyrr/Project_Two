@@ -94,4 +94,8 @@ main:
 	invalid_length:
 		la $a0, too_long #loads string
       		li $v0, 4 #prints new line for string
+		syscall
+
+      		li $v0,10 #ends program
+      		syscall
 		
