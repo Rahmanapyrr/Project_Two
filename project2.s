@@ -32,3 +32,8 @@ main:
 	addi $t6, $0, 0 # $t6 = $sum_reg. Initialized to 0
 	addi $t7, $0, 0 # contents of $t6 will be moved to t7
 	addi $s0, $0, 31 # s0 contains the multiplicand increment, the base 31
+	
+	find_length:
+		lb $t1,0($t2) #loads index of string
+		beq $t1,0, Convert #checks for null, then branches to Exits
+		beq $t1, 10, Convert #looks for new line character, then branches to Exits
