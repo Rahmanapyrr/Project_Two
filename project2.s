@@ -66,3 +66,7 @@ main:
 		
 		li $v0,10 #ends program
 		syscall
+	
+	check_string:
+      		beq $t1, 32, check_string #doesn't increment if character is a space
+      		blt $t1, 48, invalid_base #checks if character is before 0 in ASCII chart
