@@ -49,3 +49,6 @@ main:
 		lb $t1, ($t2)
 		addi $t3, $t3, -1 #decrement the length
 		j check_string
+	
+	Loop:
+		mult $t1, $t5 #multiplying the current char of the string times a power of 31
