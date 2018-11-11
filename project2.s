@@ -62,3 +62,7 @@ main:
 	Exit:
 		move $a0, $t7 #moves sum to a0
 		li $v0, 1 #prints contents of a0
+		syscall
+		
+		li $v0,10 #ends program
+		syscall
