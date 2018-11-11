@@ -43,3 +43,9 @@ main:
 		beq $t1, 32, find_length  # to skip spaces
 		addi $t3, $t3, 1 #counter increments
 		j find_length #jumps to continues loop
+		
+	Convert:
+		addi $t2, $t2, -1
+		lb $t1, ($t2)
+		addi $t3, $t3, -1 #decrement the length
+		j check_string
