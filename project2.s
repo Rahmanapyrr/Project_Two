@@ -21,3 +21,9 @@ main:
 	add $t1, $0, 0 #initializes $t1 to zero (stores character)
 	add $t4, $0, 0 #Permenanatly stores the first char of the string
 	add $t3, $0, $0 #initializes $t3 to zero (counter)
+	
+	#checking is string empty before continuation
+	la $t2, char_array #stores string address into register
+	lb $t1,0($t2) #loads first index of string
+	li $t0, 10 #10 is the ascii value of new line
+	beq $t1, $t0 invalid_empty #looks for new_line character at first index: checking if input is empty
