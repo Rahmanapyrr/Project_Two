@@ -27,3 +27,8 @@ main:
 	lb $t1,0($t2) #loads first index of string
 	li $t0, 10 #10 is the ascii value of new line
 	beq $t1, $t0 invalid_empty #looks for new_line character at first index: checking if input is empty
+	
+	addi $t5, $0, 1 # $t5 = $pow_reg Initialized to 1.
+	addi $t6, $0, 0 # $t6 = $sum_reg. Initialized to 0
+	addi $t7, $0, 0 # contents of $t6 will be moved to t7
+	addi $s0, $0, 31 # s0 contains the multiplicand increment, the base 31
