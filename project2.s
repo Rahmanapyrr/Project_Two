@@ -99,3 +99,11 @@ main:
       		li $v0,10 #ends program
       		syscall
 		
+	#Exit if string is empty
+	invalid_empty:
+		la $a0, empty #loads string
+      		li $v0, 4 #prints new line for string
+      		syscall
+
+      
+		
