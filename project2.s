@@ -85,3 +85,7 @@ main:
       		addi $t1, $t1, -87 #subtracts 87 from the ASCII value
 	  	j Loop	#converts this char to decimal, and adds it to the sum
 		
+	Translate_UpperCase:
+      		addi $t1, $t1, -55 #subtracts 48 from the ASCII value
+	  	j Loop #converts this char to decimal, and adds it to the sum
+		
