@@ -58,3 +58,7 @@ main:
 		mflo $t5 		#storing the incrementation of the power register
 		bne $t3, $zero Convert
 		j Exit
+	
+	Exit:
+		move $a0, $t7 #moves sum to a0
+		li $v0, 1 #prints contents of a0
