@@ -88,4 +88,10 @@ main:
 	Translate_UpperCase:
       		addi $t1, $t1, -55 #subtracts 48 from the ASCII value
 	  	j Loop #converts this char to decimal, and adds it to the sum
+	
+	#BRANCHS FOR PRINTING/EXIT ERROR MESSAGES	
+	#Exit if string is too long
+	invalid_length:
+		la $a0, too_long #loads string
+      		li $v0, 4 #prints new line for string
 		
