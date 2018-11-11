@@ -108,5 +108,8 @@ main:
 		li $v0,10 #ends program
       		syscall
 
-      
+      #Exit if string is Invalid, outside of range
+	invalid_base:
+		la $a0, not_valid #loads string
+		li $v0, 4 #prints new line for string
 		
