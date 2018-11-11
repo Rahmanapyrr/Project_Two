@@ -2,7 +2,6 @@
 # You will write a MIPS program that reads a string of up to 4 characters from user input.
 .data
 	char_array: .space 1000
-	
 	#Invalid Messages
 	not_valid: .asciiz "Invalid base-31 number."
 	empty: .asciiz "Input is empty."
@@ -11,7 +10,6 @@
 .globl main
 
 main:
-	
 	#getting input from user
 	li $v0, 8  
     	la $a0, max_input
@@ -95,7 +93,7 @@ main:
 		la $a0, too_long #loads string
       		li $v0, 4 #prints new line for string
 		syscall
-
+		
       		li $v0,10 #ends program
       		syscall
 		
@@ -118,4 +116,3 @@ main:
       		syscall
 	 
 	jr $ra
-		
