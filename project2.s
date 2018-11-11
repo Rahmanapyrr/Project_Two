@@ -17,3 +17,7 @@ main:
     	la $a0, max_input
     	li $a1, 1000
     	syscall
+	
+	add $t1, $0, 0 #initializes $t1 to zero (stores character)
+	add $t4, $0, 0 #Permenanatly stores the first char of the string
+	add $t3, $0, $0 #initializes $t3 to zero (counter)
