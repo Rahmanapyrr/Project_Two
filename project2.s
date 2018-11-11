@@ -76,3 +76,8 @@ main:
 		blt $t1, 97, invalid_base #checks if character is between 76 and 96
       		blt $t1, 118, Translate_LowerCase #checks if character is between 97 and 102
       		blt $t1, 128, invalid_base #checks if character is between 118 and 127
+	
+	Translate_Number:
+		addi $t1, $t1, -48 #subtracts 48 from the ASCII value
+		j Loop	#converts this char to decimal, and adds it to the sum
+		
