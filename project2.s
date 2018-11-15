@@ -1,4 +1,4 @@
-# Objective: Convert input from base 31 to base-10
+# Objective: Convert input from base-31 to base-10
 .data
 	char_array: .space 1000
 	#Invalid Messages
@@ -24,10 +24,10 @@ main:
 	li $t0, 10 #10 is the ascii value of new line
 	beq $t1, $t0 invalid_empty #looks for new_line character at first index: checking if input is empty
 	
-	addi $t5, $0, 1 # $t5 = $pow_reg Initialized to 1.
-	addi $t6, $0, 0 # $t6 = $sum_reg. Initialized to 0
-	addi $t7, $0, 0 # contents of $t6 will be moved to t7
-	addi $s0, $0, 31 # s0 contains the multiplicand increment, the base 31
+	addi $t5, $0, 1 	# $t5 = $pow_reg Initialized to 1.
+	addi $t6, $0, 0 	# $t6 = $sum_reg. Initialized to 0
+	addi $t7, $0, 0 	# contents of $t6 will be moved to t7
+	addi $s0, $0, 31 	#s0 contains the multiplicand increment, the base 31
 	addi $t4, $0, 32 	#stores 32 (space) in t4
 	
 	#Is_Valid_Spaces?
@@ -78,24 +78,24 @@ main:
 		addi $t2, $t2, -1
 		lb $t1, 0($t2)
 		beq $t1, 32, go_back 
-	
+
 	Convert:
 		lb $t1, ($t2)			#loading current character of the string decrementally
 		addi $t2, $t2, -1		#decrementing the address of the character	
 		addi $t3, $t3, -1 		#decrement the length
 		j check_string
-	
+
 	Loop:
-		mult $t1, $t5 #multiplying the current char of the string times a power of 31
+		mult $t1, $t5 		#multiplying the current char of the string times a power of 31
 		mflo $t6 		#moving the product
-		add $t7, $t7, $t6 #adding the product to the total sum
-		mult $t5, $s0 #multiplying the power regester times 31, to get to the next power of 31
+		add $t7, $t7, $t6 	#adding the product to the total sum
+		mult $t5, $s0 		#multiplying the power regester times 31, to get to the next power of 31
 		mflo $t5 		#storing the incrementation of the power register
 		bne $t3, $zero Convert
-	
+
 	Exit:
-		move $a0, $t7 #moves sum to a0
-		li $v0, 1 #prints contents of a0
+		move $a0, $t7 	#moves sum to a0
+		li $v0, 1 	#prints contents of a0
 		syscall
 		
 		li $v0,10 #ends program
@@ -103,13 +103,13 @@ main:
 	
 	check_string:
       		beq $t1, 32, Convert
-      		blt $t1, 48, invalid_base #checks if character is before 0 in ASCII chart
-		blt $t1, 58, Translate_Number #checks if character is between 48 and 57
-      		blt $t1, 65, invalid_base #checks if character is between 58 and 64
-      		blt $t1, 86, Translate_UpperCase #checks if character is between 65 and 85
-		blt $t1, 97, invalid_base #checks if character is between 76 and 96
-      		blt $t1, 118, Translate_LowerCase #checks if character is between 97 and 102
-      		blt $t1, 128, invalid_base #checks if character is between 118 and 127
+      		blt $t1, 48, invalid_base 		#checks if character is before 0 in ASCII chart
+		blt $t1, 58, Translate_Number 		#checks if character is between 48 and 57
+      		blt $t1, 65, invalid_base 		#checks if character is between 58 and 64
+      		blt $t1, 86, Translate_UpperCase 	#checks if character is between 65 and 85
+		blt $t1, 97, invalid_base 		#checks if character is between 76 and 96
+      		blt $t1, 118, Translate_LowerCase 	#checks if character is between 97 and 102
+      		blt $t1, 128, invalid_base 		#checks if character is between 118 and 127
 	
 	Translate_Number:
 		addi $t1, $t1, -48 #subtracts 48 from the ASCII value
