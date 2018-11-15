@@ -65,6 +65,11 @@ main:
 		lb $t1,0($t2)
 		addi $t2, $t2, 1
 		beq $t1, 32, count_non_space_chars
+		beq $t1, 10, go_back_one
+		beq $t1,0, go_back_one	
+		beq $t3, 4, invalid_length
+		addi $t3, $t3, 1 
+		j count_non_space_chars
 	
 	find_length:
 		lb $t1,0($t2) #loads index of string
