@@ -43,6 +43,9 @@ main:
 		lb $t1,0($t2)
 		addi $t2, $t2, 1
 		addi $t3, $t3, 1
+		beq $t1, $t0, restart_arr
+		beq $t1, 0, restart_arr
+		bne $t1, $t4, loop_two
 	
 	find_length:
 		lb $t1,0($t2) #loads index of string
