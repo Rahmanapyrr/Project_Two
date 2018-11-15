@@ -38,6 +38,11 @@ main:
 		beq $t1, $t4, loop_one
 		beq $t1, $t0, invalid_empty
 		beq $t1, $0, invalid_empty
+		
+	loop_two:
+		lb $t1,0($t2)
+		addi $t2, $t2, 1
+		addi $t3, $t3, 1
 	
 	find_length:
 		lb $t1,0($t2) #loads index of string
