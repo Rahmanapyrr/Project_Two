@@ -55,6 +55,11 @@ main:
 		beq $t1, 0, restart_arr
 		bne $t1, $t4, invalid_base
 		j loop_three
+		
+	#Now that we know that the input is valid in terms of spaces, let's restart the counter
+		restart_arr:
+			sub $t2, $t2, $t3 #restarting the pointer in char_array
+			la $t3, 0 #restaring the counter
 	
 	find_length:
 		lb $t1,0($t2) #loads index of string
