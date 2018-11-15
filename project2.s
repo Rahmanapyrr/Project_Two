@@ -77,22 +77,12 @@ main:
 	go_back:
 		addi $t2, $t2, -1
 		lb $t1, 0($t2)
+		beq $t1, 32, go_back 
 	
-	find_length:
-		lb $t1,0($t2) #loads index of string
-		beq $t1,0, Convert #checks for null, then branches to Exits
-		beq $t1, 10, Convert #looks for new line character, then branches to Exits
-		#We already established that we're not at the end of the list, so if the counter is greater than 4 at this point, the string is too long. 
-		beq $t3, 5, invalid_length #Stops the program when it realizes the input is too long
-		addi $t2, $t2, 1 #points to next character in string
-		beq $t1, 32, find_length  # to skip spaces
-		addi $t3, $t3, 1 #counter increments
-		j find_length #jumps to continues loop
-		
 	Convert:
-		addi $t2, $t2, -1
-		lb $t1, ($t2)
-		addi $t3, $t3, -1 #decrement the length
+		lb $t1, ($t2)			#loading current character of the string decrementally
+		addi $t2, $t2, -1		#decrementing the address of the character	
+		addi $t3, $t3, -1 		#decrement the length
 		j check_string
 	
 	Loop:
@@ -102,7 +92,6 @@ main:
 		mult $t5, $s0 #multiplying the power regester times 31, to get to the next power of 31
 		mflo $t5 		#storing the incrementation of the power register
 		bne $t3, $zero Convert
-		j Exit
 	
 	Exit:
 		move $a0, $t7 #moves sum to a0
