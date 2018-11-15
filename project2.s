@@ -1,5 +1,4 @@
-# Assume your Howard ID as a decimal integer is X. Let N = 27 + (X % 10) where % is the modulo operation, and M = N – 10. 
-# You will write a MIPS program that reads a string of up to 4 characters from user input.
+# Objective: Convert input from base 31 to base-10
 .data
 	char_array: .space 1000
 	#Invalid Messages
@@ -17,7 +16,6 @@ main:
     	syscall
 	
 	add $t1, $0, 0 #initializes $t1 to zero (stores character)
-	add $t4, $0, 0 #Permenanatly stores the first char of the string
 	add $t3, $0, $0 #initializes $t3 to zero (counter)
 	
 	#checking is string empty before continuation
@@ -30,6 +28,12 @@ main:
 	addi $t6, $0, 0 # $t6 = $sum_reg. Initialized to 0
 	addi $t7, $0, 0 # contents of $t6 will be moved to t7
 	addi $s0, $0, 31 # s0 contains the multiplicand increment, the base 31
+	addi $t4, $0, 32 	#stores 32 (space) in t4
+	
+	#Is_Valid_Spaces?
+	loop_one:
+		lb $t1,0($t2)
+		addi $t2, $t2, 1
 	
 	find_length:
 		lb $t1,0($t2) #loads index of string
