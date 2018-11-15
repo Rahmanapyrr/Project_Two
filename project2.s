@@ -57,9 +57,14 @@ main:
 		j loop_three
 		
 	#Now that we know that the input is valid in terms of spaces, let's restart the counter
-		restart_arr:
-			sub $t2, $t2, $t3 #restarting the pointer in char_array
-			la $t3, 0 #restaring the counter
+	restart_arr:
+		sub $t2, $t2, $t3 #restarting the pointer in char_array
+		la $t3, 0 #restaring the counter
+		
+	count_non_space_chars:
+		lb $t1,0($t2)
+		addi $t2, $t2, 1
+		beq $t1, 32, count_non_space_chars
 	
 	find_length:
 		lb $t1,0($t2) #loads index of string
