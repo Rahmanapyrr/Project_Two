@@ -102,7 +102,7 @@ main:
 		syscall
 	
 	check_string:
-      		beq $t1, 32, check_string #doesn't increment if character is a space
+      		beq $t1, 32, Convert
       		blt $t1, 48, invalid_base #checks if character is before 0 in ASCII chart
 		blt $t1, 58, Translate_Number #checks if character is between 48 and 57
       		blt $t1, 65, invalid_base #checks if character is between 58 and 64
