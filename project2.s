@@ -70,6 +70,13 @@ main:
 		beq $t3, 4, invalid_length
 		addi $t3, $t3, 1 
 		j count_non_space_chars
+		
+	#go back until you get to non-space characters. 
+	go_back_one:
+		addi $t2, $t2, -1
+	go_back:
+		addi $t2, $t2, -1
+		lb $t1, 0($t2)
 	
 	find_length:
 		lb $t1,0($t2) #loads index of string
