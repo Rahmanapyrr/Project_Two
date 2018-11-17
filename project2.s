@@ -1,6 +1,6 @@
 # Objective: Convert input from base-31 to base-10
 .data
-	char_array: .space 50000
+	char_array: .space 3000
 	#Invalid Messages
 	not_valid: .asciiz "Invalid base-31 number."
 	empty: .asciiz "Input is empty."
@@ -12,7 +12,7 @@ main:
 	#getting input from user
 	li $v0, 8  
     	la $a0, char_array
-    	li $a1, 50000
+    	li $a1, 3000
     	syscall
 	
 	add $t1, $0, 0 #initializes $t1 to zero (stores character)
