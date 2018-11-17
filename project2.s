@@ -16,7 +16,7 @@ main:
     	syscall
 	
 	add $t1, $0, 0 #initializes $t1 to zero (stores character)
-	add $t3, $0, $0 #initializes $t3 to zero (counter)
+	add $t3, $0, $0 #initializes $t3 to zero (length counter)
 	
 	#checking is string empty before continuation
 	la $t2, char_array #stores string address into register
