@@ -40,17 +40,17 @@ main:
 		beq $t1, $0, invalid_empty  #if we pass all of the spaces and get to the end of string, it's empty
 		
 	loop_two:
-		lb $t1,0($t2)
-		addi $t2, $t2, 1
-		addi $t3, $t3, 1
-		beq $t1, $t0, restart_arr
+		lb $t1,0($t2) 		#loads next char of string
+		addi $t2, $t2, 1 	#increments pointer
+		addi $t3, $t3, 1 	#increment length counter
+		beq $t1, $t0, restart_arr #If we get to the end of the string after seeing just spaces and chars "____abc", start rest of program
 		beq $t1, 0, restart_arr
-		bne $t1, $t4, loop_two
+		bne $t1, $t4, loop_two 		#if we see another space, restart loop
 		
 	loop_three:
-		lb $t1,0($t2)
-		addi $t2, $t2, 1
-		addi $t3, $t3, 1
+		lb $t1,0($t2)			#loads next char of string
+		addi $t2, $t2, 1		#increments pointer
+		addi $t3, $t3, 1		#increment length counter
 		beq $t1, $t0, restart_arr
 		beq $t1, 0, restart_arr
 		bne $t1, $t4, invalid_base
