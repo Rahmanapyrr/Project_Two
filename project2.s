@@ -62,22 +62,22 @@ main:
 		la $t3, 0 #restaring the counter
 		
 	count_non_space_chars:
-		lb $t1,0($t2)
-		addi $t2, $t2, 1
+		lb $t1,0($t2)			#loads next char of string
+		addi $t2, $t2, 1		#increments pointer
 		beq $t1, 32, count_non_space_chars
-		beq $t1, 10, go_back_one
+		beq $t1, 10, go_back_one	#When we get to the end of the string, go back one char.
 		beq $t1,0, go_back_one	
 		beq $t3, 4, invalid_length
-		addi $t3, $t3, 1 
+		addi $t3, $t3, 1 		#increment length counter
 		j count_non_space_chars
 		
 	#go back until you get to non-space characters. 
 	go_back_one:
-		addi $t2, $t2, -1
+		addi $t2, $t2, -1   #decrements the pointer by one
 	go_back:
-		addi $t2, $t2, -1
-		lb $t1, 0($t2)
-		beq $t1, 32, go_back 
+		addi $t2, $t2, -1  #decrements the pointer by one
+		lb $t1, 0($t2)		#loads the current character in the string
+		beq $t1, 32, go_back 	#if we see another space, go back some more
 
 	Convert:
 		lb $t1, ($t2)			#loading current character of the string decrementally
