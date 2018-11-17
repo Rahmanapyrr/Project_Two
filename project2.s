@@ -51,31 +51,31 @@ main:
 		lb $t1,0($t2)			#loads next char of string
 		addi $t2, $t2, 1		#increments pointer
 		addi $t3, $t3, 1		#increment length counter
-		beq $t1, $t0, restart_arr
-		beq $t1, 0, restart_arr
-		bne $t1, $t4, invalid_base
-		j loop_three
+		beq $t1, $t0, restart_arr	#branches to restart the array counter and pointer once we get to the end
+		beq $t1, 0, restart_arr		#branches to restart the array counter and pointer once we get to the end
+		bne $t1, $t4, invalid_base	#If we see something that's not a space, after we already saw spaces then characters and then spaces "ex. a_b", its an invalid input
+		j loop_three			#restart loop
 		
 	#Now that we know that the input is valid in terms of spaces, let's restart the counter
 	restart_arr:
-		sub $t2, $t2, $t3 #restarting the pointer in char_array
-		la $t3, 0 #restaring the counter
+		sub $t2, $t2, $t3 	#restarting the pointer in char_array
+		la $t3, 0 		#restarting the counter
 		
 	count_non_space_chars:
 		lb $t1,0($t2)			#loads next char of string
 		addi $t2, $t2, 1		#increments pointer
 		beq $t1, 32, count_non_space_chars
-		beq $t1, 10, go_back_one	#When we get to the end of the string, go back one char.
-		beq $t1,0, go_back_one	
-		beq $t3, 4, invalid_length
+		beq $t1, 10, go_back_one	#When we get to the end of the string, go back by one char.
+		beq $t1,0, go_back_one		#When we get to the end of the string, go back by one char.
+		beq $t3, 4, invalid_length 	#If we have reached the count of 4, and we are still seeing more non-space characters, it is invalid 
 		addi $t3, $t3, 1 		#increment length counter
-		j count_non_space_chars
+		j count_non_space_chars		#Jumps to beginning of loop
 		
 	#go back until you get to non-space characters. 
 	go_back_one:
-		addi $t2, $t2, -1   #decrements the pointer by one
+		addi $t2, $t2, -1   	#decrements the pointer by one
 	go_back:
-		addi $t2, $t2, -1  #decrements the pointer by one
+		addi $t2, $t2, -1  	#decrements the pointer by one
 		lb $t1, 0($t2)		#loads the current character in the string
 		beq $t1, 32, go_back 	#if we see another space, go back some more
 
@@ -83,7 +83,7 @@ main:
 		lb $t1, ($t2)			#loading current character of the string decrementally
 		addi $t2, $t2, -1		#decrementing the address of the character	
 		addi $t3, $t3, -1 		#decrement the length
-		j check_string
+		j check_string			#Jumpt to check if string is valid. If so, convert to base-10
 
 	Loop:
 		mult $t1, $t5 		#multiplying the current char of the string times a power of 31
