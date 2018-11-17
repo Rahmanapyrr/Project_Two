@@ -108,7 +108,7 @@ main:
       		blt $t1, 65, invalid_base 		#checks if character is between 58 and 64
       		blt $t1, 86, Translate_UpperCase 	#checks if character is between 65 and 85
 		blt $t1, 97, invalid_base 		#checks if character is between 76 and 96
-      		blt $t1, 118, Translate_LowerCase 	#checks if character is between 97 and 102
+      		blt $t1, 118, Translate_LowerCase 	#checks if character is between 97 and 117
       		blt $t1, 128, invalid_base 		#checks if character is between 118 and 127
 	
 	Translate_Number:
