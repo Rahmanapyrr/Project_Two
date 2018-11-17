@@ -95,10 +95,10 @@ main:
 
 	Exit:
 		move $a0, $t7 	#moves sum to a0
-		li $v0, 1 	#prints contents of a0
+		li $v0, 1 	#prints contents of a0. Prints the final sum. Yay!!!!
 		syscall
 		
-		li $v0,10 #ends program
+		li $v0,10 	#ends program
 		syscall
 	
 	check_string:
@@ -112,16 +112,16 @@ main:
       		blt $t1, 128, invalid_base 		#checks if character is between 118 and 127
 	
 	Translate_Number:
-		addi $t1, $t1, -48 #subtracts 48 from the ASCII value
-		j Loop	#converts this char to decimal, and adds it to the sum
+		addi $t1, $t1, -48 	#subtracts 48 from the ASCII value
+		j Loop			#converts this char to decimal, and adds it to the sum
 		
 	Translate_LowerCase:
-      		addi $t1, $t1, -87 #subtracts 87 from the ASCII value
-	  	j Loop	#converts this char to decimal, and adds it to the sum
+      		addi $t1, $t1, -87 	#subtracts 87 from the ASCII value
+	  	j Loop			#converts this char to decimal, and adds it to the sum
 		
 	Translate_UpperCase:
-      		addi $t1, $t1, -55 #subtracts 48 from the ASCII value
-	  	j Loop #converts this char to decimal, and adds it to the sum
+      		addi $t1, $t1, -55 	#subtracts 48 from the ASCII value
+	  	j Loop 			#converts this char to decimal, and adds it to the sum
 	
 	#BRANCHS FOR PRINTING/EXIT ERROR MESSAGES	
 	#Exit if string is too long
